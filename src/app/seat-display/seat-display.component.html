@@ -1,0 +1,30 @@
+<div class="plane">
+  <form [formGroup]="seatsForm">
+    <ol class="cabin fuselage">
+      <li class="row row--1">
+        <ol class="seats">
+          <li class="seat" *ngFor="let seat of seats">
+            <input type="checkbox" [id]="seat.name" [value]="seat.name" (change)="onCheckChange($event)" [checked]="seat.checked" [disabled]="seat.disabled"
+            />
+            <label [for]="seat.name">{{seat.name}}</label>
+          </li>
+        </ol>
+      </li>
+    </ol>
+    <p class="error" *ngIf="printError">* Please select {{seatsLimit}} seats.</p>
+    <button class="submit" type="submit" [disabled]="printError" (click)="submit();">Submit</button>
+  </form>
+</div>
+
+<dialog class="modal" #confirmationDialog>
+  <div class="modal-content">
+    <div class="modal-heading">
+      <h2>Booking Completed</h2>
+    </div>
+    <div class="modal-body">
+      <p>{{bookedSeats.split(' ').length > 1 ? 'Seats' : 'Seat'}}
+        <b>{{bookedSeats}}</b> {{bookedSeats.split(' ').length > 1 ? 'have' : 'has'}} been successfully booked</p>
+      <button (click)="closeModal();dataService.showSeatsDisplay = false;">Go Back</button>
+    </div>
+  </div>
+</dialog>

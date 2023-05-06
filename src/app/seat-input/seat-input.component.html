@@ -1,0 +1,11 @@
+<form [formGroup]="inputForm" (ngSubmit)="submit()">
+  <div class="formDiv">
+    <label>Select no. of seats to be booked : </label>
+    <input type="number" formControlName="seats" (change)="changeSeats($event)">
+  </div>
+  <p class="error" *ngIf="inputForm.get('seats')?.value > 7">* You can select a maximum of 7 seats.</p>
+  <p class="error" *ngIf="disableSubmit">* All Seats are booked.Please click clear.</p>
+  <p class="error" *ngIf="overflowSeats">* Entered seats not available</p>
+  <button type="submit" [disabled]="inputForm.invalid && !disableSubmit">Book Seats</button>
+  <button class="clear" [disabled]="inputForm.invalid" (click)="clearSeats()">Clear all seats</button>
+</form>

@@ -1,0 +1,14 @@
+form {
+  margin: 2rem;
+  .formDiv {
+    display: flex;
+    align-items: center;
+    input {
+      padding: 5px;
+      margin-left: 10px;
+    }
+  }
+  .clear {
+    margin-left: 1rem;
+  }
+}

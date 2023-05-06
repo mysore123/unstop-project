@@ -1,0 +1,13 @@
+<div class="conatiner">
+  <div class="heading">
+    <h1>Welcome to Seat Booker</h1>
+  </div>
+  <div class="content">
+    <div *ngIf="!dataService.showSeatsDisplay">
+      <app-seat-input (seatsLimit)="getSeatsLimit($event)"></app-seat-input>
+    </div>
+    <div *ngIf="dataService.showSeatsDisplay" class="display-container">
+      <app-seat-display [seatsLimit]="limit"></app-seat-display>
+    </div>
+  </div>
+</div>
